@@ -1,24 +1,10 @@
 <html>
-	<head> 
-		<meta charset="UTF-8">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-		<style type="text/css">
-			.logo-container{
-				background-color: #47bcff;
-			}
-		</style>
-	</head>
+	<head th:replace="~{base :: head}"></head>
 	<body>
-	
-		<div class=logo-container>
-			<span>mudi</span>
-			<span>login</span>
-		</div>
+		<div th:replace="~{base :: logo}"></div>
 		
 		<div class=container>
-			<div class="jumbotron mb-0">
-			    <h1 class="display-4">Novo Pedido</h1>
-			</div>
+			<div th:replace="~{base :: titulo('Novo Pedido')}"></div>
 			<div class="card">
 				<!-- th:object="${requisicaoNovoPedido}" acessa um objeto da classe  -->
 				<form th:object="${requisicaoNovoPedido}" class="card-body" action="/pedido/novo" method="post">
