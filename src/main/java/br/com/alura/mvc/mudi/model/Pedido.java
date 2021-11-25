@@ -12,20 +12,28 @@ import javax.persistence.Id;
 
 @Entity
 public class Pedido {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	private String nomeProduto;
 	private BigDecimal valorNegociado;
 	private LocalDate dataDaEntrega;
 	private String urlProduto;
 	private String urlImagem;
 	private String descricao;
-	
+
 	@Enumerated(EnumType.STRING)
 	private StatusPedido statusPedido;
+	
+	public StatusPedido getStatusPedido() {
+		return statusPedido;
+	}
+
+	public void setStatusPedido(StatusPedido statusPedido) {
+		this.statusPedido = statusPedido;
+	}
 
 	public String getNomeProduto() {
 		return nomeProduto;

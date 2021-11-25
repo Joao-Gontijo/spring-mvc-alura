@@ -33,6 +33,6 @@ public class PedidoController {
 		
 		Pedido pedido = requisicao.toPedido(); //criar método .toPedido() na dto
 		pedidoRepository.save(pedido);
-		return "pedido/formulario";
+		return "redirect:/home";
 	}
 }
