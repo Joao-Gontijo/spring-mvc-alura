@@ -26,6 +26,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception{
 		http
 			.authorizeRequests()
+			.antMatchers("/home/**") //qualquer um pode acessar a home, mesmo sem estar logado
+				.permitAll()
 			.anyRequest() 		//qualquer request
 			.authenticated() 	//tem que estar autenticado
 			.and()
@@ -34,7 +36,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.defaultSuccessUrl("/usuario/pedido", true) //direciona para Home depois de login
 				.permitAll())			//todo mundo pode acessar a página de login
 			.logout(logout -> logout
-				.logoutUrl("/logout"))
+				.logoutUrl("/logout")
+				.logoutSuccessUrl("/home"))
 			.csrf().disable();			
 	}
 	

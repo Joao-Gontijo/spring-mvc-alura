@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import br.com.alura.mvc.mudi.model.Pedido;
+import br.com.alura.mvc.mudi.model.StatusPedido;
 import br.com.alura.mvc.mudi.repositoy.PedidoRepository;
 
 @Controller
@@ -20,7 +21,7 @@ public class HomeController {
 	
 	@GetMapping
 	public String home(Model model) {	
-		List<Pedido> pedidos = pedidoRepository.findAll();
+		List<Pedido> pedidos = pedidoRepository.findByStatus(StatusPedido.ENTREGUE);
 		model.addAttribute("pedidos", pedidos);
 		return "home";
 	}
