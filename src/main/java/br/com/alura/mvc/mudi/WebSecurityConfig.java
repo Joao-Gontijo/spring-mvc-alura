@@ -21,7 +21,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.anyRequest() 		//qualquer request
 			.authenticated() 	//tem que estar autenticado
 			.and()
-			.httpBasic();
+			.formLogin(form -> form
+				.loginPage("/login") 	//qual a url da página
+				.permitAll());			//todo mundo pode acessar a página de login
 	}
 	
 	
