@@ -7,7 +7,7 @@
 			<div th:replace="~{base :: titulo('Novo Pedido')}"></div>
 			<div class="card">
 				<!-- th:object="${requisicaoNovoPedido}" acessa um objeto da classe  -->
-				<form th:object="${requisicaoNovoPedido}" class="card-body" action="/pedido/novo" method="post">
+				<form th:object="${requisicaoNovoPedido}" class="card-body" th:action="@{/pedido/novo}" method="post">
 					<div class="form-group">
 						<label for="nomeProduto">Produto</label>
 						<!-- utilizar o * atrela ao objeto da classe -->

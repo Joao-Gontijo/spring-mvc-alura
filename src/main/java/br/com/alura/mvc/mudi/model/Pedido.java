@@ -69,6 +69,14 @@ public class Pedido {
 		return urlProduto;
 	}
 
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 	public void setUrlProduto(String urlProduto) {
 		this.urlProduto = urlProduto;
 	}

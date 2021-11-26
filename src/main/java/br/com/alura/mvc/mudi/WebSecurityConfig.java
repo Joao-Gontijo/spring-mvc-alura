@@ -34,7 +34,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.defaultSuccessUrl("/home", true) //direciona para Home depois de login
 				.permitAll())			//todo mundo pode acessar a página de login
 			.logout(logout -> logout
-				.logoutUrl("/logout"));			
+				.logoutUrl("/logout"))
+			.csrf().disable();			
 	}
 	
 	
