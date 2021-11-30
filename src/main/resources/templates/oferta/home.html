@@ -30,7 +30,8 @@
 								<label>Comentário</label>
 								<textarea class="form-control" v-model="pedido.comentario"></textarea>
 							</div>
-							<button v-on:click="enviarOferta(pedido)" class="btn btn-primary mt-2">Enviar oferta</button>
+							<button v-if="pedido.ofertaEnviada" class="btn btn-success mt-2">Oferta Enviada</button>
+							<button v-else v-on:click="enviarOferta(pedido)" class="btn btn-primary mt-2">Enviar oferta</button>
 						</div>
 						<div class="col-12 col-sm-4">
 							<div>
@@ -53,7 +54,10 @@
 		 			mounted(){ //função do ciclo de vida do JS que é chamada logo após a renderização da página
 		 				axios
 		 					.get('http://localhost:8080/api/pedidos/aguardando') //faz a requisição
-		 					.then(response => (this.pedidos = response.data)) //atribui a responsa da requisição a pedidos
+		 					.then(response => {
+		 						response.data.forEach(pedido => pedido.ofertaEnviada = false)
+		 						this.pedidos = response.data //atribui a responsa da requisição a pedidos
+		 					}) 
 		 			},
 		 			methods:{
 		 				enviarOferta: function(pedido){
@@ -64,7 +68,7 @@
 		 							dataDaEntrega: pedido.dataDaEntrega,
 		 							comentario: pedido.comentario,
 		 						})
-		 						.then(response => console.log(response))
+		 						.then(response => pedido.ofertaEnviada = true)
 		 					
 		 				}
 		 			}
