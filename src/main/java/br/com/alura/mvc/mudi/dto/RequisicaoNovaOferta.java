@@ -8,12 +8,11 @@ import br.com.alura.mvc.mudi.model.Oferta;
 
 public class RequisicaoNovaOferta {
 
-	private static final DateTimeFormatter formatter =
-			DateTimeFormatter.ofPattern("dd/MM/yyyy");
-	
+	private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
 	private Long pedidoId;
 	private String valor;
-	private String dataEntrega;
+	private String dataDaEntrega;
 	private String comentario;
 
 	public Long getPedidoId() {
@@ -32,14 +31,6 @@ public class RequisicaoNovaOferta {
 		this.valor = valor;
 	}
 
-	public String getDataEntrega() {
-		return dataEntrega;
-	}
-
-	public void setDataEntrega(String dataEntrega) {
-		this.dataEntrega = dataEntrega;
-	}
-
 	public String getComentario() {
 		return comentario;
 	}
@@ -48,11 +39,20 @@ public class RequisicaoNovaOferta {
 		this.comentario = comentario;
 	}
 
+	public String getDataDaEntrega() {
+		return dataDaEntrega;
+	}
+
+	public void setDataDaEntrega(String dataDaEntrega) {
+		this.dataDaEntrega = dataDaEntrega;
+	}
+
 	public Oferta toOferta() {
 		Oferta oferta = new Oferta();
 		oferta.setComentario(this.comentario);
-		oferta.setDataEntrega(LocalDate.parse(this.dataEntrega, formatter));
+		oferta.setDataDaEntrega(LocalDate.parse(this.dataDaEntrega, formatter));
 		oferta.setValor(new BigDecimal(this.valor));
 		return oferta;
 	}
+
 }

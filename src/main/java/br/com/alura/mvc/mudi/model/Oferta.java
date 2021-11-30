@@ -12,27 +12,25 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class Oferta {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private BigDecimal valor;;
-	private LocalDate dataEntrega;
+	private BigDecimal valor;
+	private LocalDate dataDaEntrega;
 	private String comentario;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Pedido pedido;
 
-	
-	
 	public Long getId() {
 		return id;
 	}
-	
+
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
+
 	public BigDecimal getValor() {
 		return valor;
 	}
@@ -41,12 +39,12 @@ public class Oferta {
 		this.valor = valor;
 	}
 
-	public LocalDate getDataEntrega() {
-		return dataEntrega;
+	public LocalDate getDataDaEntrega() {
+		return dataDaEntrega;
 	}
 
-	public void setDataEntrega(LocalDate dataEntrega) {
-		this.dataEntrega = dataEntrega;
+	public void setDataDaEntrega(LocalDate dataDaEntrega) {
+		this.dataDaEntrega = dataDaEntrega;
 	}
 
 	public String getComentario() {
@@ -64,6 +62,5 @@ public class Oferta {
 	public void setPedido(Pedido pedido) {
 		this.pedido = pedido;
 	}
-	
-	
+
 }

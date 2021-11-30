@@ -26,6 +26,7 @@ public class Pedido {
 
 	private String nomeProduto;
 	private BigDecimal valorNegociado;
+
 	private LocalDate dataDaEntrega;
 	private String urlProduto;
 	private String urlImagem;
@@ -33,15 +34,24 @@ public class Pedido {
 
 	@Enumerated(EnumType.STRING)
 	private StatusPedido status;
-	
-	//mapeamento de usuário
+
+	// mapeamento de usuário
 	@JsonIgnore
 	@ManyToOne(fetch = FetchType.EAGER)
 	private User user;
-	
+
 	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "pedido", fetch = FetchType.LAZY)
 	private List<Oferta> ofertas;
+
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 	
 	public StatusPedido getStatus() {
 		return status;
